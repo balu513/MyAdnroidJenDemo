@@ -70,7 +70,7 @@ pipeline {
       post {
         success {
           // Notify if the upload succeeded
-          mail to: 'balub513@gmail.com', subject: 'New build available!', body: 'Check it out!'
+          mail to: 'balub513@gmail.com', subject: 'New build available!', body: "Check it out!  ###  Build ${env.BUILD_NUMBER} success; ${env.BUILD_URL}"
         }
       }
     }
