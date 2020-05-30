@@ -65,7 +65,7 @@ pipeline {
         archiveArtifacts '**/*.apk'
 
         // Upload the APK to Google Play
-        androidApkUpload googleCredentialsId: 'Google Play', apkFilesPattern: '**/*-release.apk', trackName: 'beta'
+ //       androidApkUpload googleCredentialsId: 'Google Play', apkFilesPattern: '**/*-release.apk', trackName: 'beta'
       }
       post {
         success {
