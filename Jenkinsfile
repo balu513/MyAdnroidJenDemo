@@ -34,18 +34,19 @@ pipeline {
         archiveArtifacts '**/*.apk'
       }
     }
-    stage('Static analysis') {
-      steps {
+  //  stage('Static analysis') {
+  //    steps {
         // Run Lint and analyse the results
-        sh './gradlew lintDebug'
-        androidLint pattern: '**/lint-results-*.xml'
-      }
-    }
+  //      sh './gradlew lintDebug'
+  //      androidLint pattern: '**/lint-results-*.xml'
+  //    }
+  //  }
     stage('Deploy') {
-      when {
+      /* when {
         // Only execute this stage when building from the `beta` branch
         branch 'beta'
       }
+     
       environment {
         // Assuming a file credential has been added to Jenkins, with the ID 'my-app-signing-keystore',
         // this will export an environment variable during the build, pointing to the absolute path of
@@ -55,6 +56,7 @@ pipeline {
         // Similarly, the value of this variable will be a password stored by the Credentials Plugin
         SIGNING_KEY_PASSWORD = credentials('my-app-signing-password')
       }
+      */
       steps {
         // Build the app in release mode, and sign the APK using the environment variables
         sh './gradlew assembleRelease'
@@ -68,7 +70,7 @@ pipeline {
       post {
         success {
           // Notify if the upload succeeded
-          mail to: 'beta-testers@example.com', subject: 'New build available!', body: 'Check it out!'
+          mail to: 'balub513@gmail.com', subject: 'New build available!', body: 'Check it out!'
         }
       }
     }
@@ -76,7 +78,7 @@ pipeline {
   post {
     failure {
       // Notify developer team of the failure
-      mail to: 'android-devs@example.com', subject: 'Oops!', body: "Build ${env.BUILD_NUMBER} failed; ${env.BUILD_URL}"
+      mail to: 'balub513@gmail.com', subject: 'Oops!', body: "Build ${env.BUILD_NUMBER} failed; ${env.BUILD_URL}"
     }
   }
 }
